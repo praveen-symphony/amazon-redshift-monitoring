@@ -9,7 +9,7 @@ Most of the graphs are based on the information provided in this blog article, s
 ## Installation
 To install the script, you should create a Lambda function in the same VPC as the Redshift cluster.
 
-The password for the Redshift user is going to be encrypted with KMS, so you don't need to write it in the Lambda script in clear.
+The password for the Redshift user is going to be encrypted with KMS, so you don't need to write it in the Lambda script in plain text.
 
 These are the steps you should follow:
 
@@ -75,7 +75,7 @@ These are the steps you should follow:
   * Timeout: 5 minutes
   * VPC: Use the same VPC as the Redshift cluster. You're going to need at least two private subnets with access to the Redshift cluster in its Security Group. You should have a NAT Gateway to give access to Internet to those subnets routing tables. You cannot use public subnets.
 
-* Add an Event Source to the Lambda function with a Scheduled Event, running with the same frecuency you configured in the Lambda function.
+* Add an Event Source to the Lambda function with a Scheduled Event, running with the same frequency you configured in the Lambda function.
 
 * After a few hours you can check your CloudWatch metrics, and create alarms. You can also create a Dashboard with all the graphs and have a view of your database as this one:
 
